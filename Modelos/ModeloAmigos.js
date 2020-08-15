@@ -17,7 +17,7 @@ class ModeloAmigos {
             }else{
 
                 connection.query(
-                    "SELECT * FROM usuarios U WHERE (U.Id = ?)",
+                    "SELECT Id, sexo, nombre, puntos, fechaNacimiento FROM usuarios U WHERE (U.Id = ?)",
                     [id_usuario],
                     function (err, result) {
                     
@@ -34,7 +34,6 @@ class ModeloAmigos {
                                 usuario.sexo = result[0].sexo;
                                 usuario.nombre = result[0].nombre;
                                 usuario.puntos = result[0].puntos;
-                                usuario.imagen = result[0].imagen;
                                 usuario.fechaNacimiento = result[0].fechaNacimiento;
 
                                 let fechaDeEdad = new Date(Date.now() - usuario.fechaNacimiento.getTime());
