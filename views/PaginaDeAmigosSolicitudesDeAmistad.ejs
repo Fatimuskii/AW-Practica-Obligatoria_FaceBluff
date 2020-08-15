@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("headers") %>
+</head>
+
+<body>
+
+    <%- include("CabeceraIdentificado") %>
+
+    <main id="cuerpo">
+
+        <div class="tituloSeccion">
+            <h1>Solicitudes de amistad</h1>
+            <h4> Total de solicitudes: <%=solicitudes.length%> </h3>
+        </div>
+        <div class="contenido">
+            <% for(let i = 0 ; i < solicitudes.length ; ++i) { %>
+            <div class="filaContenido filaContenido_center">
+                <img class= "separadorPerfil" src="/usuarios/CargarImagenDePerfil/<%=solicitudes[i].Id%>">
+                <span class="separadorPerfil"> <%=solicitudes[i].nombre%></span>
+            </div>
+            <form action="/amigos/RechazarSolicitud/" method="POST">
+                <input type="submit" class="boton centrarBoton btn_decline" value="Rechazar">
+                <input type="hidden" name="Id" value="<%=solicitudes[i].Id%>">
+            </form>
+            <form action="/amigos/AceptarSolicitud/" method="POST">
+                <input type="submit" class="boton centrarBoton btn_accept" value="Aceptar">
+                <input type="hidden" name="Id" value="<%=solicitudes[i].Id%>">
+            </form>
+
+            <% } %>
+
+        </div>
+
+        <div class="tituloSeccion">
+            <h1>Buscar a gente</h1>
+        </div>
+        <div class="contenido">
+            <form class="filaContenido" action="/amigos/BusquedaDeUsuarios" method="GET">
+                <span>Buscar por nombre:</span>
+                <input type="text" name="coincidencia">
+                <input class ="boton small_boton" type="submit" value="Buscar">
+            </form>
+        </div>
+
+        <div class="tituloSeccion">
+            <h1>Mis amigos/as: <%=amigos.length%></h1>
+        </div>
+        <div class="contenido">
+            <% for(let i = 0 ; i < amigos.length ; ++i) { %>
+            <div class="filaContenido filaContenido_center">
+                <img class="separadorPerfil" src="/usuarios/CargarImagenDePerfil/<%=amigos[i].Id%>">
+                <a class="separadorPerfil" href="/amigos/perfilAmistad/<%=amigos[i].Id%>" class="centrarBoton boton"><%=amigos[i].nombre%></a>
+            </div>
+            <% } %>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

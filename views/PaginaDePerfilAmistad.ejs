@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("headers") %>
+</head>
+
+<body>
+
+    <%- include("CabeceraIdentificado") %>
+
+    <main id="cuerpo">
+        <div class="tituloSeccion">
+            <h1>Perfil de: <%=usuario.nombre%></h1>
+        </div>
+        <div class="contenido">
+            <div class="filaContenido filaContenido_center">
+              
+                <img src="/usuarios/CargarImagenDePerfil/<%=usuario.Id%>">
+                
+                <div>
+                    <div class="separadorPerfil">
+                        <%=usuario.nombre%>
+                    </div>
+                    <div class="separadorPerfil">
+                        <%=usuario.edad%> años
+                    </div>
+                    <div class="separadorPerfil">
+                        <%=usuario.sexo%>
+                    </div>
+                    <div class="separadorPerfil">
+                        <%=usuario.puntos%> pts
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
