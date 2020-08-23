@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-08-2020 a las 20:01:27
+-- Tiempo de generación: 23-08-2020 a las 20:22:48
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -43,6 +43,7 @@ CREATE TABLE `mensajes` (
   `id` int(100) NOT NULL,
   `id_from` int(10) NOT NULL,
   `id_to` int(10) NOT NULL,
+  `nombreEmisor` varchar(50) DEFAULT NULL,
   `texto` text NOT NULL,
   `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -135,6 +136,15 @@ CREATE TABLE `usuarios` (
   `fechaNacimiento` date NOT NULL,
   `sexo` varchar(1) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`Id`, `email`, `clave`, `nombre`, `puntos`, `imagen`, `fechaNacimiento`, `sexo`) VALUES
+(1, 'fatima@ucm.es', '12345678', 'Fatima I.', 0, NULL, '1993-06-24', 'F'),
+(2, 'manu@ucm.es', '12345678', 'Manu Guerrero', 0, 'c96df9fee2a88bc3d727a7785996dc6c', '1994-10-18', 'M'),
+(3, 'laura@ucm.es', '12345678', 'Laura Romero', 0, 'a529fe4c46af9c997cc96d36211ce953', '1987-06-17', 'O');
 
 --
 -- Índices para tablas volcadas
