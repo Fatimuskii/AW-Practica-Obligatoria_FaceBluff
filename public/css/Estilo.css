@@ -304,4 +304,34 @@ input[type=text] {
     font-weight: bold;
 }
 
+/* Pagina: Mensajes */
+
+.formularioMensajes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ /*para los inputs dentro de un form*/
+.formularioMensajes>input{
+    width: 70px;
+    border-color: black;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10%;  
+}
+.formularioMensajes>input:hover{
+    width: 75px;
+    border-color: white;
+ 
+}
+
+.datosMensaje{
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(90, 87, 87); 
+    font-size: 20px;
+}
+
 /****************************************************************************************/

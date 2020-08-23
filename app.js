@@ -14,7 +14,7 @@ const config = require("./config");
 // Declaracion de los Routers de la aplicacion.
 const routerAmigos = require("./Routers/RouterAmigos");
 const routerBasicas = require("./Routers/RouterBasicas");
-const routerMensajes = require("/Routers/RouterMensajes"); 
+const routerMensajes = require("./Routers/RouterMensajes"); 
 const routerUsuarios = require("./Routers/RouterUsuarios");
 const routerCuestiones = require("./Routers/RouterCuestiones");
 
@@ -101,7 +101,8 @@ app.use("/amigos", routerAmigos);
 app.use("/cuestiones", routerCuestiones);
 
 // Routers que gestionan rutas relacionadas con la funcionalidad de los mensajes.
-app.use("/cuestiones", routerCuestiones);
+app.use("/mensajes", routerMensajes);
+
 
 // Middleware para el control del error 404 (recurso no encontrado).
 app.use(function(request, response, next) {
