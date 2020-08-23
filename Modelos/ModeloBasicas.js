@@ -63,12 +63,12 @@ class ModeloBasicas {
 
     }
 
-    insertarUsuario(usuario, callBack) {
+    insertarUsuario(usuario, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."));
+                callback(new Error("Error de conexión a la base de datos."));
             } else {
 
                 connection.query(
@@ -80,9 +80,9 @@ class ModeloBasicas {
 
                         if (err) {
                             console.log(err);
-                            callBack(new Error("Error al introduccir el usuario en la base de datos."), null);
+                            callback(new Error("Error al introduccir el usuario en la base de datos."), null);
                         } else {
-                            callBack(null);
+                            callback(null);
                         }
 
                     });

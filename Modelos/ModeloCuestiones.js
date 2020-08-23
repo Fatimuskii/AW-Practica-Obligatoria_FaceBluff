@@ -6,11 +6,11 @@ class ModeloCuestiones {
         this.pool = pool;
     }
 
-    obtenerPregunta(Id_Pregunta, callBack){
+    obtenerPregunta(Id_Pregunta, callback){
 
         this.pool.getConnection(function (err, connection) {
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."), null);
+                callback(new Error("Error de conexión a la base de datos."), null);
             }
             else{
                 connection.query(
@@ -21,9 +21,9 @@ class ModeloCuestiones {
                         connection.release(); // Liberamos la conexion
                         
                         if (err) {
-                            callBack(new Error("Error al insertar la pregunta en la bases de datos."), null);
+                            callback(new Error("Error al insertar la pregunta en la bases de datos."), null);
                         } else {
-                            callBack(null,result[0]);
+                            callback(null,result[0]);
                         }
 
                     });
@@ -33,12 +33,12 @@ class ModeloCuestiones {
         });
     }
 
-    insertarRespuestaParaUnoMismo(Id_usuario, Id_pregunta, Id_respuesta, callBack) {
+    insertarRespuestaParaUnoMismo(Id_usuario, Id_pregunta, Id_respuesta, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."), null);
+                callback(new Error("Error de conexión a la base de datos."), null);
             } else {
 
                 connection.query(
@@ -49,9 +49,9 @@ class ModeloCuestiones {
                         connection.release(); // Liberamos la conexion
 
                         if (err) {
-                            callBack(new Error("Error al insertar la respuesta de mi mismo en la base de datos."), null);
+                            callback(new Error("Error al insertar la respuesta de mi mismo en la base de datos."), null);
                         } else {
-                            callBack(null);
+                            callback(null);
                         }
 
                     });
@@ -63,12 +63,12 @@ class ModeloCuestiones {
 
     }
 
-    obtenerRespuestasDeUnaPregunta(Id_pregunta, callBack) {
+    obtenerRespuestasDeUnaPregunta(Id_pregunta, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."), null);
+                callback(new Error("Error de conexión a la base de datos."), null);
             } else {
             
                 connection.query(
@@ -79,9 +79,9 @@ class ModeloCuestiones {
                         connection.release(); // Liberamos la conexion
 
                         if (err) {
-                            callBack(new Error("Error al extraer respuestas de una pregunta."), null);
+                            callback(new Error("Error al extraer respuestas de una pregunta."), null);
                         } else {
-                            callBack(null,result);
+                            callback(null,result);
                         }
 
                     });
@@ -92,12 +92,12 @@ class ModeloCuestiones {
         
     }
 
-    insertarPregunta(pregunta, callBack) {
+    insertarPregunta(pregunta, callback) {
         
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."), null);
+                callback(new Error("Error de conexión a la base de datos."), null);
             } else {
                 connection.query(
                     "INSERT INTO preguntas (texto) VALUES (?)",
@@ -106,9 +106,9 @@ class ModeloCuestiones {
 
                         connection.release(); // Liberamos la conexion
                         if (err) {
-                            callBack(new Error("Error al insertar la pregunta en la bases de datos."));
+                            callback(new Error("Error al insertar la pregunta en la bases de datos."));
                         } else {
-                            callBack(null, result.insertId);
+                            callback(null, result.insertId);
                         }
 
                     });
@@ -119,12 +119,12 @@ class ModeloCuestiones {
 
     }
 
-    insertarRespuestas(respuestas, callBack) {
+    insertarRespuestas(respuestas, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."), null);
+                callback(new Error("Error de conexión a la base de datos."), null);
             } else {
 
                 connection.query(
@@ -135,9 +135,9 @@ class ModeloCuestiones {
                         connection.release(); // Liberamos la conexion
 
                         if (err) {
-                            callBack(new Error("Error al insertar la pregunta en la bases de datos."), null);
+                            callback(new Error("Error al insertar la pregunta en la bases de datos."), null);
                         } else {
-                            callBack(null, result.insertId);
+                            callback(null, result.insertId);
                         }
 
                     });
@@ -146,12 +146,12 @@ class ModeloCuestiones {
 
     }
 
-    extraerPreguntas(callBack) {
+    extraerPreguntas(callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."));
+                callback(new Error("Error de conexión a la base de datos."));
             } else {
 
                 connection.query(
@@ -161,9 +161,9 @@ class ModeloCuestiones {
                         connection.release(); // Liberamos la coenxion
 
                         if (err) {
-                            callBack(new Error("Error al extraer las preguntas de la base de datos."));
+                            callback(new Error("Error al extraer las preguntas de la base de datos."));
                         } else {
-                            callBack(null, result);
+                            callback(null, result);
                         }
 
                     });
@@ -174,12 +174,12 @@ class ModeloCuestiones {
 
     }
 
-    preguntaRespondida(Id_usuario, Id_pregunta, callBack) {
+    preguntaRespondida(Id_usuario, Id_pregunta, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."));
+                callback(new Error("Error de conexión a la base de datos."));
             } else {
 
                 connection.query(
@@ -190,13 +190,13 @@ class ModeloCuestiones {
                         connection.release(); // Liberamos la coenxion
 
                         if (err) {
-                            callBack(new Error("Error al verificar si hay respuesta a una mismo de una pregunta."));
+                            callback(new Error("Error al verificar si hay respuesta a una mismo de una pregunta."));
                         } else {
 
                             if (result.length == 0) {
-                                callBack(err, false);
+                                callback(err, false);
                             } else {
-                                callBack(err, true);
+                                callback(err, true);
                             }
 
                         }
@@ -209,12 +209,12 @@ class ModeloCuestiones {
 
     }
 
-    extraerRespuestasParaPregunta(Id_amigo, Id_pregunta, callBack) {
+    extraerRespuestasParaPregunta(Id_amigo, Id_pregunta, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."));
+                callback(new Error("Error de conexión a la base de datos."));
             } else {
            
                 connection.query(
@@ -229,7 +229,7 @@ class ModeloCuestiones {
                         connection.release(); // Liberamos la coenxion
 
                         if(err) {
-                            callBack(new Error("Error al extraer respuestas aleatorias.", null));
+                            callback(new Error("Error al extraer respuestas aleatorias.", null));
                         } else {
 
                             let indice = Math.floor(Math.random() * result.length); 
@@ -240,7 +240,7 @@ class ModeloCuestiones {
 
                             result[0] = aux;
 
-                            callBack(null, result);
+                            callback(null, result);
                         
                         }
 
@@ -254,12 +254,12 @@ class ModeloCuestiones {
 
     }
 
-    comprobarRespuesta(usuarioId, amigoId, preguntaId, respuestaId, callBack) {
+    comprobarRespuesta(usuarioId, amigoId, preguntaId, respuestaId, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."), null);
+                callback(new Error("Error de conexión a la base de datos."), null);
             } else {
             
                 connection.query(
@@ -270,7 +270,7 @@ class ModeloCuestiones {
                     function (err, result) {
 
                         if(err) {
-                            callBack(new Error("Error al comprobar si la respuesta es correcta."), null);
+                            callback(new Error("Error al comprobar si la respuesta es correcta."), null);
                         } else {
 
                             let correct = result.length > 0;
@@ -283,7 +283,7 @@ class ModeloCuestiones {
                                 function(err,result) {
 
                                     if(err) {
-                                        callBack(new Error("Error al insertar usuariorespondeporamigo."), null);
+                                        callback(new Error("Error al insertar usuariorespondeporamigo."), null);
                                     } else {
 
                                         if(correct) {
@@ -298,16 +298,16 @@ class ModeloCuestiones {
                                                     connection.release();
 
                                                     if(err) {
-                                                        callBack(new Error("Error al actualizar los puntos"), null);
+                                                        callback(new Error("Error al actualizar los puntos"), null);
                                                     } else {
-                                                        callBack(null,correct);
+                                                        callback(null,correct);
                                                     }
     
                                                 });
     
                                         } else {
                                             connection.release();
-                                            callBack(null,correct);
+                                            callback(null,correct);
                                         }
 
                                     }
@@ -324,12 +324,12 @@ class ModeloCuestiones {
 
     } 
 
-    obtenerAmigosQueHanRespondidoPregunta(Id_usuario, Id_pregunta, callBack) {
+    obtenerAmigosQueHanRespondidoPregunta(Id_usuario, Id_pregunta, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."));
+                callback(new Error("Error de conexión a la base de datos."));
             } else {
             
                 connection.query(
@@ -361,9 +361,9 @@ class ModeloCuestiones {
                         connection.release();
 
                         if (err) {
-                            callBack(new Error("Error al extraer usuarios por los que (hemos/no hemos) responido."), null);
+                            callback(new Error("Error al extraer usuarios por los que (hemos/no hemos) responido."), null);
                         } else {
-                            callBack(null, result);
+                            callback(null, result);
                         }
 
                     });

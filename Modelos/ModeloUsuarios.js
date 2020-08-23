@@ -63,12 +63,12 @@ class ModeloUsuario {
 
     }
 
-    modificarPerfilDeUsuario(email, usuario, callBack) {
+    modificarPerfilDeUsuario(email, usuario, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."), null);
+                callback(new Error("Error de conexión a la base de datos."), null);
             } else {
 
                 connection.query(
@@ -77,7 +77,7 @@ class ModeloUsuario {
                     function (err, result) {
 
                         if (err) {
-                            callBack(new Error("Error al modificar el perfil de usuario en la base de datos."), null);
+                            callback(new Error("Error al modificar el perfil de usuario en la base de datos."), null);
                         } else {
 
                             if(usuario.imagen != null) {
@@ -90,16 +90,16 @@ class ModeloUsuario {
                                         connection.release(); // Liberamos la coenxion
                 
                                         if (err) {
-                                            callBack(new Error("Error al modificar la imagen del perfil de usuario en la base de datos."), null);
+                                            callback(new Error("Error al modificar la imagen del perfil de usuario en la base de datos."), null);
                                         } else {
-                                            callBack(null);
+                                            callback(null);
                                         }
 
                                     });
 
                             } else {
                                 connection.release(); // Liberamos la coenxion
-                                callBack(null);
+                                callback(null);
                             }
 
                         }
@@ -112,12 +112,12 @@ class ModeloUsuario {
 
     }
 
-    cargarImagenDePerfil(Id, callBack) {
+    cargarImagenDePerfil(Id, callback) {
 
         this.pool.getConnection(function (err, connection) {
 
             if (err) {
-                callBack(new Error("Error de conexión a la base de datos."), null);
+                callback(new Error("Error de conexión a la base de datos."), null);
             } else {
 
                 connection.query(
@@ -128,9 +128,9 @@ class ModeloUsuario {
                         connection.release(); // Liberamos la coenxion
 
                         if (err) {
-                            callBack(new Error("Error al extraer la imagen del perfil de usuario."), null);
+                            callback(new Error("Error al extraer la imagen del perfil de usuario."), null);
                         } else {
-                            callBack(null,result[0].imagen);
+                            callback(null,result[0].imagen);
                         }
 
                     });
