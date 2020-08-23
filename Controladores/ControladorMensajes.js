@@ -26,7 +26,41 @@ function mostrarMensajes(request, response, next){
 
 }
 
+function mostrarMensaje(request, response, next){
+    
+    oModeloMensajes.leerMensaje(request.params.id, function(err, mensaje){
+
+        if(err){
+            next(err);
+        }else{
+            response.status(200);
+            //response.setFlash("¡Tu respuesta ha sido añadida!");
+            console.log("Datos del mensaje: ", mensaje);
+            response.render("PaginaDeMensaje", { mensaje : mensaje});
+        }
+
+    });
+}
+
+function eliminarMensaje(request, response, next){
+    oModeloMensajes.eliminarMensaje(request.session.usuario.Id), function(err, result){
+
+        if(err){
+            next(err);
+        }
+        else{
+            if(result===1){
+                response.status(200);
+                response.setFlash("¡Se ha eliminado el mensaje!");
+                response.redirect("/mensajes/");
+            }
+        }
+    }
+}
+
 //Exportación
 module.exports ={
-    mostrarMensajes : mostrarMensajes
+    mostrarMensajes : mostrarMensajes,
+    mostrarMensaje : mostrarMensaje, 
+    eliminarMensaje: eliminarMensaje
 }; 

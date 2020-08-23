@@ -12,7 +12,8 @@
     <main id="cuerpo">
         <div class="tituloSeccion">
             <h1>Mensajes Recibidos</h1>
-            <h4> Total de mensajes recibidos: <%=mensajes.length%> </h3>
+            <h4> Total de mensajes recibidos: <%=mensajes.length%> </h4>
+            <%- include("flash") %>
         </div>
 
         <div class="contenido">
@@ -26,10 +27,10 @@
                         <label> <span> Fecha: </span><%=mensajes[i].fecha %></label>
                         <label> <span> Hora: </span> <%=mensajes[i].hora %></label>
                     </div>
-                    <form class= "formularioMensajes" action="/mensajes/mostrarMensaje/<%=mensajes[i].id%>" method="POST">
+                    <form class= "formularioMensajes" action="/mensajes/mostrarMensaje/<%=mensajes[i].id%>" method="GET">
                         <input type="submit" class="btn_accept " value="Leer">
                     </form>
-                    <form class="formularioMensajes" action="/mensajes/borrarMensaje/<%=mensajes[i].id%>" method="POST">
+                    <form class="formularioMensajes" action="/mensajes/borrarMensaje/<%=mensajes[i].id%>" method="GET">
                         <input type="submit" class="btn_decline" value="Borrar">
                     </form>
                 </div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include("headers") %>
+</head>
+
+<body>
+
+    <%- include("CabeceraIdentificado") %>
+    <main id="cuerpo">
+        <div class="tituloSeccion">
+            <h1>Mensaje de: <%=mensaje.nombreEmisor%></h1>
+            <h4> Recibido: <%=mensaje.fecha%> a las <%=mensaje.hora%></h4>
+        </div>
+
+        <div class="contenido">
+
+            <div id="contenidoMensaje">
+                <img src="/usuarios/CargarImagenDePerfil/<%=mensaje.id_from%>">
+                <span > <%=mensaje.texto%></span>
+            </div>
+            <div id="btn_options_mensajes">
+                <form action="/mensajes/escribirMensaje/" method="POST">
+                    <input type="submit" value="Escribir a <%=mensaje.nombreEmisor%>">
+                    <input type="hidden" name="id_destinatario" value="<%=mensaje.id_from%>">
+                    <input type="hidden" name="nombre_destinatario" value="<%=mensaje.nombreEmisor%>">
+                </form>
+                <form action="/mensajes/borrarMensaje/<%=mensaje.id%>" method="GET">
+                    <input type="submit" value="Borrar">
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+</body>
