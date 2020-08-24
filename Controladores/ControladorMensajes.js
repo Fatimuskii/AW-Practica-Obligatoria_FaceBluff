@@ -34,8 +34,6 @@ function mostrarMensaje(request, response, next){
             next(err);
         }else{
             response.status(200);
-            //response.setFlash("¡Tu respuesta ha sido añadida!");
-            console.log("Datos del mensaje: ", mensaje);
             response.render("PaginaDeMensaje", { mensaje : mensaje});
         }
 
@@ -43,19 +41,20 @@ function mostrarMensaje(request, response, next){
 }
 
 function eliminarMensaje(request, response, next){
-    oModeloMensajes.eliminarMensaje(request.session.usuario.Id), function(err, result){
+    oModeloMensajes.borrarMensaje(request.params.id, function(err, res){
 
         if(err){
             next(err);
         }
         else{
-            if(result===1){
-                response.status(200);
-                response.setFlash("¡Se ha eliminado el mensaje!");
-                response.redirect("/mensajes/");
+          
+            response.status(200);
+            if(res.affectedRows>0){  
+                response.setFlash("¡Se ha eliminado el mensaje!");  
             }
+            response.redirect("/mensajes/");
         }
-    }
+    });
 }
 
 //Exportación

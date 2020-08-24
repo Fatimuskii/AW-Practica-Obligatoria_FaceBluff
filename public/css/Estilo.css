@@ -337,19 +337,18 @@ input[type=text] {
 
 #contenidoMensaje{
     display: flex;
-    justify-content: left;
+    flex-direction: row;
+    justify-content: center;
 }
 
-#contenidoMensaje> img{
-    flex-grow: 1;
-    align-self: center;
-    width:0.05%;
-    height: 0.10%;
-
+#contenidoMensaje img{
+    width: 100px;
+    height: 100px;
 }
-#contenidoMensaje> span{
-    flex-grow: 2;
-    /*border: 3px solid rgba(0,0,0,.2);*/
+
+.cuerpoMensaje{
+    word-wrap: break-word;
+    width: 70%;
     align-self: center;
     margin-left: 20px;
     font-family: "Lucida Console";

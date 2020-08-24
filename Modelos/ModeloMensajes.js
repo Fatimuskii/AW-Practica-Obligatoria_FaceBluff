@@ -106,16 +106,17 @@ class ModeloMensajes {
             }
 
             else{
-                connection.query("DELETE FROM mensajes WHERE id = ?", 
+                connection.query("DELETE FROM mensajes WHERE (id = ?)", 
                 [id_mensaje], 
                 function(err, result){
                     //Liberamos la conexión
                     connection.release(); 
                     if(err){
-                        callback(new Error("Error al borrar mensaje."), 0);
+                        callback(new Error("Error al borrar mensaje."), null);
                     }
                     else{
-                        callback(null, 1);
+            
+                        callback(null, result);
                     }
                 });
             }
