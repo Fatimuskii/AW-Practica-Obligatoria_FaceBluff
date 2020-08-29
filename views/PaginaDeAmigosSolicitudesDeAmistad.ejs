@@ -53,6 +53,7 @@
             <div class="filaContenido filaContenido_center">
                 <img class="separadorPerfil" src="/usuarios/CargarImagenDePerfil/<%=amigos[i].Id%>">
                 <a class="separadorPerfil" href="/amigos/perfilAmistad/<%=amigos[i].Id%>" class="centrarBoton boton"><%=amigos[i].nombre%></a>
+                <a class="boton" href="/mensajes/enviarMensaje/<%=amigos[i].Id%>+<%=amigos[i].nombre%>">Enviar Mensaje</a>
             </div>
             <% } %>
         </div>

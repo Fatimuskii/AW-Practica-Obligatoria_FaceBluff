@@ -177,6 +177,33 @@ button[type="submit"] {
     flex-grow: 1;
 }
 
+.columnaContenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.columnaContenido > span {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 30px;
+    align-self: flex-start;    
+}
+
+
+.columnaContenido > textarea {
+    font-size: 20px;
+    align-self: flex-center;    
+}
+
+.columnaContenido> .boton{
+    align-self: flex-end;
+}
+
+.separadorCol{
+    margin-top: 15px; 
+}
 /* Comun a toda */
 
 .boton {
@@ -369,4 +396,8 @@ input[type=text] {
     margin-left: 10px;
 }
 
+
+textarea {
+    resize: none;
+}
 /****************************************************************************************/

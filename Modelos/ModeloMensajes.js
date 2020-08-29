@@ -21,7 +21,7 @@ class ModeloMensajes {
             }
 
             else{
-                connection.query("SELECT * FROM mensajes WHERE (id_to = ?)", 
+                connection.query("SELECT * FROM mensajes WHERE (id_to = ?) ORDER BY fecha DESC", 
                 [Id_usuario], 
                 function(err, result){
 
@@ -124,6 +124,39 @@ class ModeloMensajes {
         });
 
     }
+
+    // Manda un mensaje a un amigo
+    //@param mensaje: objeto que contiene ya los datos necesarios para importar un mensaje en la bbdd
+
+    //@return con todos sus datos. 
+    enviarMensaje(mensaje,callback){
+
+        this.pool.getConnection(function (err, connection) {
+            if(err){
+                callback(new Error("Error de conexión a la base de datos."));
+            }
+
+            else{
+                connection.query("INSERT INTO mensajes ( id_from, id_to, nombreEmisor, texto) VALUES (?, ?, ?, ?)", 
+                [mensaje.id_from, mensaje.id_to, mensaje.nombreEmisor, mensaje.texto], 
+                function(err, result){
+                    //Liberamos la conexión
+                    connection.release(); 
+                    if(err){
+                        callback(new Error("Error al enviar mensaje."), null);
+                    }
+                    else{
+            
+                        console.log(result);
+                        callback(null, result);
+                    }
+                });
+            }
+
+        });
+
+    }
+
 
 }
 

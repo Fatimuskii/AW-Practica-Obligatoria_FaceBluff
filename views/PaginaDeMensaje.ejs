@@ -21,8 +21,8 @@
                 <div class="cuerpoMensaje"> <%=mensaje.texto%></div>
             </div>
             <div id="btn_options_mensajes">
-                <form action="/mensajes/escribirMensaje/" method="POST">
-                    <input type="submit" value="Escribir a <%=mensaje.nombreEmisor%>">
+                <form action="/mensajes/enviarMensaje/<%=mensaje.id_from%>+<%=mensaje.nombreEmisor%>" method="GET">
+                    <input type="submit" value="Responder">
                     <input type="hidden" name="id_destinatario" value="<%=mensaje.id_from%>">
                     <input type="hidden" name="nombre_destinatario" value="<%=mensaje.nombreEmisor%>">
                 </form>

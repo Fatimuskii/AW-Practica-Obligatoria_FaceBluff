@@ -47,7 +47,7 @@ function eliminarMensaje(request, response, next){
             next(err);
         }
         else{
-          
+
             response.status(200);
             if(res.affectedRows>0){  
                 response.setFlash("¡Se ha eliminado el mensaje!");  
@@ -57,9 +57,53 @@ function eliminarMensaje(request, response, next){
     });
 }
 
+function mostrarEnviarMensaje(request, response, next){
+
+    let Id_amistad = request.params.data.split("+")[0];
+    let nombre_amistad = request.params.data.split("+")[1];
+
+    let receptor ={
+        id : Id_amistad,
+        nombre: nombre_amistad
+    }
+    response.status(200);
+    response.render("PaginaEnviarMensaje", {receptor : receptor});
+
+}
+
+function enviarMensaje(request, response,next){
+
+    // atributos necesarios para nuevo mensaje en la bd
+    let mensaje ={
+        id_from: request.session.usuario.Id,
+        id_to: request.body.id_receptor,
+        nombreEmisor: request.session.usuario.nombre,
+        texto: request.body.texto
+    }
+
+    oModeloMensajes.enviarMensaje(mensaje, function(err, res){
+        if(err){
+            next(err);
+        }
+        else{
+
+            response.status(200);
+            if(res.insertId>0){  
+                response.setFlash("¡Mensaje Enviado!");  
+            }
+            response.redirect("/mensajes/");
+        }
+    });
+
+}
+
+
+
 //Exportación
 module.exports ={
     mostrarMensajes : mostrarMensajes,
     mostrarMensaje : mostrarMensaje, 
-    eliminarMensaje: eliminarMensaje
+    eliminarMensaje: eliminarMensaje, 
+    mostrarEnviarMensaje: mostrarEnviarMensaje, 
+    enviarMensaje: enviarMensaje,
 }; 
