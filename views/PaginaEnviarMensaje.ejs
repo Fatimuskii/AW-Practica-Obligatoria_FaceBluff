@@ -3,11 +3,13 @@
 
 <head>
     <%- include("headers") %>
+
 </head>
 
 <body>
 
     <%- include("CabeceraIdentificado") %>
+    
 
     <main id="cuerpo">
         <div class="tituloSeccion">
@@ -17,10 +19,11 @@
         <div class= "contenido">
             <form class="columnaContenido" action="/mensajes/enviarMensaje" method="POST">
                 <span class="separadorCol"> Mensaje: </span>
-                <textarea class="separadorCol" name="texto" rows="8" cols="30" placeholder="Escribe aquí tu mensaje..." maxlength="500" required></textarea>
+                <textarea class="separadorCol" id="texto" name="texto" rows="8" cols="30" placeholder="Escribe aquí tu mensaje..." maxlength="500" required></textarea>
                 <input type="hidden" name="id_receptor" value="<%=receptor.id%>">
+                <label id="contador"></label>
                 <input class ="boton separadorCol" type="submit" value="Enviar">
-        
+                
             </form>
 
         </div>

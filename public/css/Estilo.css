@@ -400,4 +400,10 @@ input[type=text] {
 textarea {
     resize: none;
 }
+
+#contador { 
+    color: darkslategray; 
+    font-size: 20px;
+    align-self: flex-end;
+}
 /****************************************************************************************/
