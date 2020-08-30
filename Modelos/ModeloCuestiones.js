@@ -81,7 +81,7 @@ class ModeloCuestiones {
                         if (err) {
                             callback(new Error("Error al extraer respuestas de una pregunta."), null);
                         } else {
-                            callback(null,result.insertId);
+                            callback(null,result);
                         }
 
                     });
