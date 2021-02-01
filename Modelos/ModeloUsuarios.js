@@ -141,6 +141,32 @@ class ModeloUsuario {
 
     }
 
+    cargarRanking(callback){
+        this.pool.getConnection(function (err, connection) {
+
+            if (err) {
+                callback(new Error("Error de conexión a la base de datos."));
+            } else {
+
+                connection.query(
+                    "SELECT * FROM usuarios ORDER BY puntos DESC LIMIT 30",
+                    function (err, result) {
+
+                        connection.release(); // Liberamos la coenxion
+
+                        if (err) {
+                            callback(new Error("Error al extraer información de ranking"));
+                        } else {
+                            callback(null,result);
+                        }
+
+                    });
+
+            }
+        
+        });
+    }
+
 }
 
 module.exports = ModeloUsuario;

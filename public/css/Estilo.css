@@ -61,8 +61,9 @@ button[type="submit"] {
 #botonera {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
-
+/*
 #botonera > a {
     color:white;
     margin-left: 10px;
@@ -72,9 +73,26 @@ button[type="submit"] {
 
 #botonera > a:hover {
     font-style: italic;
-}
+}*/
 
 /* Todas las paginas menos: CreacionNuevoUsuario , IdentificacionUsuario */
+
+.enlace > img {
+    border-radius: 100%;
+    height:35px;
+    width: 35px;
+}
+
+.enlace > a{
+    color:white;
+    margin-left: 10px;
+    font-family: "Chela One";
+    font-size: 30px;
+}
+.enlace > a:hover {
+    font-style: italic;
+}
+
 
 #puntuacion > img {
     border-radius: 100%;
@@ -150,9 +168,10 @@ button[type="submit"] {
 .filaContenido_center{
     justify-content: center;
 }
+
 .filaContenido > img {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     align-self: center;
 }
 
@@ -176,6 +195,33 @@ button[type="submit"] {
     flex-grow: 1;
 }
 
+.columnaContenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.columnaContenido > span {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 30px;
+    align-self: flex-start;    
+}
+
+
+.columnaContenido > textarea {
+    font-size: 20px;
+    align-self: flex-center;    
+}
+
+.columnaContenido> .boton{
+    align-self: flex-end;
+}
+
+.separadorCol{
+    margin-top: 15px; 
+}
 /* Comun a toda */
 
 .boton {
@@ -279,6 +325,7 @@ input[type=text] {
     font-weight: bold;   
     margin: 20px; 
     margin-left: 40px;
+   
 }
 
 /* Paginas: Vista Pregunta */
@@ -304,4 +351,89 @@ input[type=text] {
     font-weight: bold;
 }
 
+/* Pagina: Mensajes */
+
+.formularioMensajes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ /*para los inputs dentro de un form*/
+.formularioMensajes>input{
+    width: 70px;
+    border-color: black;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10%;  
+}
+.formularioMensajes>input:hover{
+    width: 75px;
+    border-color: white;
+ 
+}
+
+.datosMensaje{
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(90, 87, 87); 
+    font-size: 20px;
+}
+
+#contenidoMensaje{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+#contenidoMensaje img{
+    width: 100px;
+    height: 100px;
+}
+
+.cuerpoMensaje{
+    word-wrap: break-word;
+    width: 70%;
+    align-self: center;
+    margin-left: 20px;
+    font-family: "Lucida Console";
+}
+
+#btn_options_mensajes{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#btn_options_mensajes>form> input{
+    color: white;
+    background-color: rgba(237, 96, 211, 0.5);
+    border-color: black;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10%;
+    margin-left: 10px;
+}
+
+
+textarea {
+    resize: none;
+}
+
+#contador { 
+    color: darkslategray; 
+    font-size: 20px;
+    align-self: flex-end;
+}
+
+#medium_img{
+    height:65px;
+    width: 65px;
+}
+
+#small_img{
+    height:50px;
+    width: 50px;
+}
 /****************************************************************************************/

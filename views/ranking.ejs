@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include("headers") %>
+</head>
+
+<body>
+
+    <%- include("CabeceraIdentificado") %>
+
+    <main id="cuerpo">
+        <div class="tituloSeccion">
+            <h1> Top Ranking </h1>
+        </div>
+
+        <div class="contenido">
+            <% for(let i = 0 ; i < list.length ; ++i) { %>
+            <div class="filaContenido">
+                <% if(i === 0) { %>
+                    <img class="separadorPerfil" src="/img/medalla_oro.png">
+                <%} else if(i===1){%>
+                    <img class="separadorPerfil" id="medium_img" src="/img/medalla_plata.png">
+                <%} else if(i===2){%>
+                    <img class="separadorPerfil" id="small_img" src="/img/medalla_bronce.png">
+                <%} else { %>
+                    <span class="separadorPerfil"> <%=i+1%>.-</span>
+                <% } %>
+                <img class="separadorPerfil" src="/usuarios/CargarImagenDePerfil/<%=list[i].Id%>">
+                <span class="separadorPerfil"> <%=list[i].nombre%></span>
+                <span class="separadorPerfil"> <%=list[i].puntos%></span>
+            </div>
+            <%}%>
+
+    </div>
+    </main>
+
+</body>
+
+
+</html>

@@ -23,6 +23,8 @@ routerUsuarios.get("/CargarImagenDePerfil/:id", controladorUsuarios.cargarImagen
 
 routerUsuarios.get("/PaginaDePerfilDeUsuario", controladorUsuarios.mostrarPerfilDeUsuario);
 
+routerUsuarios.get("/ranking", controladorUsuarios.mostrarRanking);
+
 routerUsuarios.get("/CerrarSesion", controladorUsuarios.cerrarSesion);
 
 module.exports = routerUsuarios;

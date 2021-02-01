@@ -82,6 +82,20 @@ function mostrarModificacionDelPerfilDeUsuario(request, response, next) {
     response.render("ModificacionPerfilUsuario");
 }
 
+function mostrarRanking(request, response, next){
+    
+    oModeloUsuario.cargarRanking(function(err, list){
+        if (err) {
+            next(err);
+        } else {
+
+            response.status(200); 
+            response.render("ranking", {list :list});
+
+        }
+
+    });
+}
 function cerrarSesion(request, response) {
     response.setFlash(null);
     response.status(200);
@@ -89,11 +103,14 @@ function cerrarSesion(request, response) {
     request.session.destroy();
 }
 
+
+
 module.exports = {
     cerrarSesion: cerrarSesion,
     cargarImagenDePerfil: cargarImagenDePerfil,
     mostrarPerfilDeUsuario: mostrarPerfilDeUsuario,
     guardarModificacionesPerfil: guardarModificacionesPerfil,
+    mostrarRanking: mostrarRanking,
     mostrarModificacionDelPerfilDeUsuario: mostrarModificacionDelPerfilDeUsuario
 };
 

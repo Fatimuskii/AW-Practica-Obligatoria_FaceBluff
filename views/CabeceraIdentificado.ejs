@@ -3,10 +3,32 @@
         <h1>FACEBLUFF</h1>
     </div>
     <div id="botonera">
-        <a href="/usuarios/PaginaDePerfilDeUsuario">Perfil</a>
-        <a href="/amigos/PaginaDeAmigosSolicitudesDeAmistad">Amigos</a>
-        <a href="/cuestiones/ListadoAleatorioDePreguntas">Preguntas</a>
-        <a href="/usuarios/CerrarSesion">Desconectar</a>
+        <div class="enlace">
+            <a href="/usuarios/PaginaDePerfilDeUsuario">Perfil</a>
+            <img src="/img/perfil.png">
+        </div>
+        <div class="enlace">
+            <a href="/amigos/PaginaDeAmigosSolicitudesDeAmistad">Amigos</a>
+            <img src="/img/amistades.png">
+        </div>
+        <div class="enlace">
+            <a href="/cuestiones/ListadoAleatorioDePreguntas">Preguntas</a>
+            <img src="/img/pregunta.png">
+        </div>
+        <div class="enlace">
+            <a href="/mensajes/">Mensajes</a>
+            <img src="/img/mensaje.png">
+        </div>
+        
+        <div class="enlace">
+            <a href="/usuarios/ranking/">Ranking</a>
+            <img src="/img/ranking.png">
+        </div>
+        <div class="enlace">
+            <a href="/usuarios/CerrarSesion">Desconectar</a>
+            <img src="/img/cerrar-sesion.png">
+        </div>
+       
         <div id="puntuacion">
             <img src="/usuarios/CargarImagenDePerfil/<%=usuario.Id%>">
             <span><%=usuario.puntos%></span>
